@@ -1,0 +1,134 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Design the new dashboard UI",
+      "description": "Create wireframes and high-fidelity designs for the team dashboard.",
+      "member": "Maryam Duryab",
+      "status": "complete",
+      "priority": "high",
+      "due_date": "2024-12-31",
+      "created_at": "2026-04-26T06:09:13.181477"
+    },
+    {
+      "id": 2,
+      "title": "Set up Flask API endpoints",
+      "description": "Build RESTful API for task CRUD operations.",
+      "member": "Huzaifa",
+      "status": "complete",
+      "priority": "high",
+      "due_date": "2025-01-10",
+      "created_at": "2026-04-26T06:09:13.181531"
+    },
+    {
+      "id": 3,
+      "title": "Frontend Kanban integration",
+      "description": "Connect the Kanban board to the live Flask API.",
+      "member": "Huzaifa",
+      "status": "in_progress",
+      "priority": "high",
+      "due_date": "2025-01-20",
+      "created_at": "2026-04-26T06:09:13.181543"
+    },
+    {
+      "id": 5,
+      "title": "Mobile responsiveness polish",
+      "description": "Fix layout issues on smaller screens.",
+      "member": "Maryam Duryab",
+      "status": "in_progress",
+      "priority": "medium",
+      "due_date": "2025-01-22",
+      "created_at": "2026-04-26T06:09:13.181574"
+    },
+    {
+      "id": 6,
+      "title": "Deploy to Azure App Service",
+      "description": "Configure CI/CD pipeline and deploy the full app to Azure.",
+      "member": "Mohsin",
+      "status": "pending",
+      "priority": "high",
+      "due_date": "2025-01-30",
+      "created_at": "2026-04-26T06:09:13.181587"
+    },
+    {
+      "id": 7,
+      "title": "New Test Task",
+      "description": "",
+      "member": "Huzaifa",
+      "status": "pending",
+      "priority": "medium",
+      "due_date": "",
+      "created_at": "2026-04-26T06:10:16.913576"
+    },
+    {
+      "id": 8,
+      "title": "data handling",
+      "description": "data handling",
+      "member": "Huzaifa",
+      "status": "pending",
+      "priority": "low",
+      "due_date": "",
+      "created_at": "2026-04-26T06:27:51.677570"
+    },
+    {
+      "id": 9,
+      "title": "data123",
+      "description": "data managment",
+      "member": "Mohsin",
+      "status": "in_progress",
+      "priority": "medium",
+      "due_date": "",
+      "created_at": "2026-04-27T05:52:04.644399"
+    },
+    {
+      "id": 10,
+      "title": "TEST",
+      "description": "nOTHING",
+      "member": "Huzaifa",
+      "status": "pending",
+      "priority": "medium",
+      "due_date": "239872-03-20",
+      "created_at": "2026-04-27T05:57:37.001479"
+    },
+    {
+      "id": 11,
+      "title": "KUCH B",
+      "description": "ME PAGAL",
+      "member": "Huzaifa",
+      "status": "pending",
+      "priority": "medium",
+      "due_date": "0345-04-23",
+      "created_at": "2026-04-27T05:58:50.455445"
+    },
+    {
+      "id": 12,
+      "title": "UI designing",
+      "description": "using react and native techniques to design UI interfaces",
+      "member": "Huzaifa",
+      "status": "pending",
+      "priority": "medium",
+      "due_date": "",
+      "created_at": "2026-04-27T19:45:03.849823"
+    },
+    {
+      "id": 13,
+      "title": "testing",
+      "description": "",
+      "member": "Huzaifa",
+      "status": "pending",
+      "priority": "medium",
+      "due_date": "23223-03-12",
+      "created_at": "2026-04-30T07:55:33.849373"
+    },
+    {
+      "id": 14,
+      "title": "ui ux design",
+      "description": "interactive design of ui and ux",
+      "member": "Mohsin",
+      "status": "pending",
+      "priority": "medium",
+      "due_date": "",
+      "created_at": "2026-05-07T20:59:29.357625"
+    }
+  ]
+}

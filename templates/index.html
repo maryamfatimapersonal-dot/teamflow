@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeamFlow — Huzaifa's Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-mark">TF</span>
+      <span class="logo-text">TeamFlow</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-view="dashboard">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item" data-view="tasks">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Task Board
+      </a>
+      <a href="#" class="nav-item" data-view="tracker">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Team Tracer
+      </a>
+      <a href="#" class="nav-item" data-view="members">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Members
+      </a>
+    </nav>
+
+    <div class="sidebar-team">
+      <p class="sidebar-label">Team</p>
+      <div class="member-chip" data-member="Huzaifa">
+        <span class="avatar av-huzaifa">H</span>
+        <span>Huzaifa</span>
+        <span class="online-dot"></span>
+      </div>
+      <div class="member-chip" data-member="Maryam Duryab">
+        <span class="avatar av-maryam">M</span>
+        <span>Maryam Duryab</span>
+        <span class="online-dot"></span>
+      </div>
+      <div class="member-chip" data-member="Mohsin">
+        <span class="avatar av-mohsin">Mo</span>
+        <span>Mohsin</span>
+        <span class="online-dot"></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Header -->
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="page-title-wrap">
+          <h1 class="page-title" id="pageTitle">Dashboard</h1>
+          <p class="page-sub" id="pageSub">Overview of team activity</p>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Search tasks…" />
+        </div>
+        <button class="btn-add-task" id="openModal">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Task
+        </button>
+      </div>
+    </header>
+
+    <!-- DASHBOARD VIEW -->
+    <section class="view active" id="view-dashboard">
+      <div class="stats-row">
+        <div class="stat-card" data-anim="fade-up" style="--delay:0s">
+          <div class="stat-icon icon-total">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-num" id="statTotal">0</span>
+            <span class="stat-label">Total Tasks</span>
+          </div>
+          <div class="stat-bar"><div class="stat-fill" id="fillTotal" style="width:100%;background:var(--accent-blue)"></div></div>
+        </div>
+        <div class="stat-card" data-anim="fade-up" style="--delay:.1s">
+          <div class="stat-icon icon-done">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-num" id="statDone">0</span>
+            <span class="stat-label">Completed</span>
+          </div>
+          <div class="stat-bar"><div class="stat-fill" id="fillDone" style="background:var(--accent-green)"></div></div>
+        </div>
+        <div class="stat-card" data-anim="fade-up" style="--delay:.2s">
+          <div class="stat-icon icon-prog">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-num" id="statProg">0</span>
+            <span class="stat-label">In Progress</span>
+          </div>
+          <div class="stat-bar"><div class="stat-fill" id="fillProg" style="background:var(--accent-amber)"></div></div>
+        </div>
+        <div class="stat-card" data-anim="fade-up" style="--delay:.3s">
+          <div class="stat-icon icon-pend">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-num" id="statPend">0</span>
+            <span class="stat-label">Pending</span>
+          </div>
+          <div class="stat-bar"><div class="stat-fill" id="fillPend" style="background:var(--accent-red)"></div></div>
+        </div>
+      </div>
+
+      <!-- Activity Feed + Member Stats -->
+      <div class="dashboard-grid">
+        <div class="card" data-anim="fade-up" style="--delay:.4s">
+          <h3 class="card-title">Recent Activity</h3>
+          <ul class="activity-feed" id="activityFeed">
+            <li class="activity-empty">No activity yet</li>
+          </ul>
+        </div>
+        <div class="card" data-anim="fade-up" style="--delay:.5s">
+          <h3 class="card-title">Team Workload</h3>
+          <div class="workload-list" id="workloadList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASK BOARD VIEW -->
+    <section class="view" id="view-tasks">
+      <div class="filter-bar">
+        <div class="filter-tabs">
+          <button class="ftab active" data-filter="all">All</button>
+          <button class="ftab" data-filter="Huzaifa">Huzaifa</button>
+          <button class="ftab" data-filter="Maryam Duryab">Maryam</button>
+          <button class="ftab" data-filter="Mohsin">Mohsin</button>
+        </div>
+      </div>
+      <div class="kanban-board" id="kanbanBoard">
+        <div class="kanban-col" id="col-pending">
+          <div class="col-header">
+            <span class="col-dot dot-pending"></span>
+            <h3>Pending</h3>
+            <span class="col-count" id="cnt-pending">0</span>
+          </div>
+          <div class="task-list" id="list-pending" data-status="pending"></div>
+        </div>
+        <div class="kanban-col" id="col-inprogress">
+          <div class="col-header">
+            <span class="col-dot dot-inprogress"></span>
+            <h3>In Progress</h3>
+            <span class="col-count" id="cnt-inprogress">0</span>
+          </div>
+          <div class="task-list" id="list-inprogress" data-status="in_progress"></div>
+        </div>
+        <div class="kanban-col" id="col-complete">
+          <div class="col-header">
+            <span class="col-dot dot-complete"></span>
+            <h3>Complete</h3>
+            <span class="col-count" id="cnt-complete">0</span>
+          </div>
+          <div class="task-list" id="list-complete" data-status="complete"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM TRACER VIEW -->
+    <section class="view" id="view-tracker">
+      <div class="tracer-grid">
+        <div class="tracer-member" data-anim="fade-up" style="--delay:0s">
+          <div class="tracer-avatar av-huzaifa">H</div>
+          <h3>Huzaifa</h3>
+          <div class="tracer-role">Team Lead</div>
+          <div class="tracer-tasks" id="trace-huzaifa"></div>
+        </div>
+        <div class="tracer-member" data-anim="fade-up" style="--delay:.15s">
+          <div class="tracer-avatar av-maryam">M</div>
+          <h3>Maryam Duryab</h3>
+          <div class="tracer-role">Developer</div>
+          <div class="tracer-tasks" id="trace-maryam"></div>
+        </div>
+        <div class="tracer-member" data-anim="fade-up" style="--delay:.3s">
+          <div class="tracer-avatar av-mohsin">Mo</div>
+          <h3>Mohsin</h3>
+          <div class="tracer-role">Designer</div>
+          <div class="tracer-tasks" id="trace-mohsin"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERS VIEW -->
+    <section class="view" id="view-members">
+      <div class="members-grid">
+        <div class="member-card" data-anim="fade-up" style="--delay:0s">
+          <div class="mc-glow glow-blue"></div>
+          <div class="mc-avatar av-huzaifa">H</div>
+          <h3>Huzaifa</h3>
+          <p class="mc-role">Team Lead</p>
+          <div class="mc-stats" id="mc-huzaifa"></div>
+        </div>
+        <div class="member-card" data-anim="fade-up" style="--delay:.15s">
+          <div class="mc-glow glow-purple"></div>
+          <div class="mc-avatar av-maryam">M</div>
+          <h3>Maryam Duryab</h3>
+          <p class="mc-role">Developer</p>
+          <div class="mc-stats" id="mc-maryam"></div>
+        </div>
+        <div class="member-card" data-anim="fade-up" style="--delay:.3s">
+          <div class="mc-glow glow-teal"></div>
+          <div class="mc-avatar av-mohsin">Mo</div>
+          <h3>Mohsin</h3>
+          <p class="mc-role">Designer</p>
+          <div class="mc-stats" id="mc-mohsin"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ADD TASK MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">New Task</h2>
+        <button class="modal-close" id="closeModal">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="taskId" />
+        <div class="form-group">
+          <label>Task Title</label>
+          <input type="text" id="taskTitle" placeholder="What needs to be done?" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="taskDesc" placeholder="Add details…" rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Assigned To</label>
+            <select id="taskMember">
+              <option value="Huzaifa">Huzaifa</option>
+              <option value="Maryam Duryab">Maryam Duryab</option>
+              <option value="Mohsin">Mohsin</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="taskStatus">
+              <option value="pending">Pending</option>
+              <option value="in_progress">In Progress</option>
+              <option value="complete">Complete</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Priority</label>
+          <div class="priority-pills">
+            <label class="ppill"><input type="radio" name="priority" value="low"> Low</label>
+            <label class="ppill"><input type="radio" name="priority" value="medium" checked> Medium</label>
+            <label class="ppill"><input type="radio" name="priority" value="high"> High</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" id="taskDue" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="cancelModal">Cancel</button>
+        <button class="btn-save" id="saveTask">Save Task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
